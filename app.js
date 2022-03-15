@@ -24,7 +24,7 @@ const item2 = {
 };
 
 const item3 =  {
-  name: "<--Hit this to delete an itemudemey"
+  name: "<--Hit this to delete an item"
 }
 // default items list for Today list
 const defaultItems = [item1,item2,item3];
