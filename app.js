@@ -6,8 +6,10 @@ const _= require("lodash")
 // set up moongose section
 const mongoose= require("mongoose");
 const { redirect } = require("express/lib/response");
+var token = config.MY_API_TOKEN;
+var key = config.SECRET_API_KEY;
 
-mongoose.connect("mongodb+srv://admin-lam:Test123@cluster0.velxy.mongodb.net/todolistDB",{useNewUrlParser: true}); // connect url
+mongoose.connect("mongodb+srv://admin-"+token+":"+ key +"@cluster0.velxy.mongodb.net/todolistDB",{useNewUrlParser: true}); // connect url
 //create new schema
 const itemsSchema = {
   name: String,
@@ -54,9 +56,9 @@ app.get("/", function(req, res) {
     if (result.length===0) { // if liset item is emty=> insert
       //insert many records to Item model
         Item.insertMany(defaultItems, function (err){
-          if(err) {
+          if(err) {// if there is error
             console.log(err);
-          }else {
+          }else {// if not error
             console.log("success added new records");
           }
         });
